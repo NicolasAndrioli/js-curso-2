@@ -25,8 +25,16 @@
         if (chute == randomNumber){
             exibirTexto('h1','Acertou!!')
             let palavraTentativa  = tentativas > 1 ? 'tentativas ' : 'tentativa';
+
             let mensagemTentativa = `Você acertou o número secreto com ${tentativas} ${palavraTentativa}! `;
+
             exibirTexto('p',mensagemTentativa);
+
+            document.getElementById('reiniciar').removeAttribute('disabled');
+            //pegar um campo do html pelo id 
+
+            
+
         } else {
             if (chute > randomNumber){
                 exibirTexto('p','O número secreto é menor');
@@ -34,11 +42,20 @@
                 exibirTexto('p','O número secreto é maior');
             }
             tentativas++;
+            limparCampo()
         }
   }
 
   function gerarNumero(){
        return parseInt(Math.random() * 10 + 1);
   }
+
+  function limparCampo(){
+        chute = document.querySelector('input');
+        chute.value = '';
+
+  }
+
+  
 
  // criando a  função de clicar no botão, sempre entre chaves
